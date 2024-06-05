@@ -264,12 +264,11 @@ allowDiagonal.addEventListener('change', function() {
 animStep.addEventListener('click', function() {
     animStepCount += 1;
     drawGrid();
-} , true);
+}, true);
 animReset.addEventListener('click', function() {
     animStepCount = 0;
     drawGrid();
-} , true);
-
+}, true);
 
 // rendering
 function getCellSize() {
@@ -357,9 +356,27 @@ window.addEventListener('resize', function() {
     updateCanvasSize();
 }, true);
 updateCanvasSize();
-window.setInterval(function() {
+
+function animationLoop() {
+    var intervalTime = 1000;
     var speedVal = parseInt(animSpeed.value);
-    if (speedVal >= parseInt(animSpeed.max)) animStepCount = Infinity;
-    animStepCount += speedVal;
+    if (speedVal <= 0) {
+    } else if (speedVal <= 40) {
+        intervalTime -= speedVal * 20;
+        animStepCount += 1;
+    } else if (speedVal <= 80) {
+        intervalTime -= speedVal * 20;
+        animStepCount += speedVal / 60;
+    } else if (speedVal < 100) {
+        intervalTime = 0;
+        animStepCount += speedVal / 40;
+    } else {
+        intervalTime = 250;
+        animStepCount = Infinity;
+    }
     drawGrid();
-}, 250);
+    intervalTime = Math.max(intervalTime, 1);
+    intervalTime = Math.min(intervalTime, 1000);
+    setTimeout(animationLoop, intervalTime);
+}
+setTimeout(animationLoop, 1000);
