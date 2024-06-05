@@ -8,22 +8,30 @@
     <canvas id="canvas"></canvas>
     <div id="ui">
         <div id="ui-menu">
+            <label class="horizontal-center">Controls</label>
             <label>Left-click: place tile.</label>
             <label>Right-click: erase tile.</label>
-            <label><br>Grid:</label>
+            <label>Spacebar: reset animation.</label>
+
+            <label class="horizontal-center"><br>Grid</label>
             <label>X size: <input id="grid-size-x" type="number" value="20" min="1" max="100"> </label>
             <label>Y size: <input id="grid-size-y" type="number" value="20" min="1" max="100"> </label>
             <button id="clear-button">Clear grid</button>
-            <label><br>Tile type:</label>
-            <label>
-                <input id="tile-wall" type="radio" name="selection" value="wall"> Wall
-            </label>
-            <label>
-                <input id="tile-start" type="radio" name="selection" value="start"> Start position
-            </label>
-            <label>
-                <input id="tile-end" type="radio" name="selection" value="end"> End position
-            </label>
+            
+            <label class="horizontal-center"><br>Tile type</label>
+            <label><input id="tile-wall" type="radio" name="selection" value="wall"> Wall</label>
+            <label><input id="tile-start" type="radio" name="selection" value="start"> Start position</label>
+            <label><input id="tile-end" type="radio" name="selection" value="end"> End position</label>
+            
+            <label class="horizontal-center"><br>Animation</label>
+            <label>Animation speed: <input class="vertical-center" id="anim-speed" type="range" min="0" max="400" value="50"></label>
+            <button id="anim-step">Step animation</button>
+            <button id="anim-reset">Reset animation</button>
+            
+            <label class="horizontal-center"><br>Options</label>
+            <label><input class="vertical-center" id="allow-diagonal" type="checkbox"> Allow diagonal movement</label>
+            <label><input class="vertical-center" id="diagonal-corner-check" type="checkbox"> Allow going through diagonal corners</label>
+
             <label><br>Author: Edvinas Navickas</label>
         </div>
         <div id="dropdown-button"><</div>
